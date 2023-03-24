@@ -47,10 +47,11 @@ def _default_jwt_headers_handler(identity):
 
 
 def _default_jwt_payload_handler(identity):
+    print(identity)
     iat = datetime.utcnow()
     exp = iat + current_app.config.get('JWT_EXPIRATION_DELTA')
     nbf = iat + current_app.config.get('JWT_NOT_BEFORE_DELTA')
-    identity = getattr(identity, 'id') or identity['id']
+    identity = identity['id']
     return {'exp': exp, 'iat': iat, 'nbf': nbf, 'identity': identity}
 
 
@@ -129,7 +130,7 @@ def _default_auth_request_handler():
 
 
 def _default_auth_response_handler(access_token, identity):
-    return jsonify({'access_token': access_token.decode('utf-8')})
+    return jsonify({'access_token': access_token})
 
 
 def _default_jwt_error_handler(error):
