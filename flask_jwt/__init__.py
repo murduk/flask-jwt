@@ -34,7 +34,7 @@ CONFIG_DEFAULTS = {
     'JWT_AUTH_PASSWORD_KEY': 'password',
     'JWT_ALGORITHM': 'HS256',
     'JWT_LEEWAY': timedelta(seconds=10),
-    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_EXPIRATION_DELTA': timedelta(seconds=300),
     'JWT_NOT_BEFORE_DELTA': timedelta(seconds=0),
     'JWT_VERIFY_CLAIMS': ['signature', 'exp', 'nbf', 'iat'],
